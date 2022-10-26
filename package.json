@@ -4,12 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "",
-    "build:view": "webpack --mode=production",
-    "build:server": "",
-    "dev:view": "webpack-dev-server --mode=development --hot",
-    "dev:server": "ts-node-dev index.ts --watch",
-    "dev": "concurrently \"yarn dev:view\" \"yarn dev:server\""
+    "build": "webpack --mode=production",
+    "dev": "webpack-dev-server --mode=development --hot"
   },
   "dependencies": {
     "@toss/hangul": "^1.0.3",
@@ -26,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-redux": "^8.0.4",
+    "react-router-dom": "^6.4.2",
     "redux": "^4.2.0",
     "styled-components": "^5.3.6"
   },

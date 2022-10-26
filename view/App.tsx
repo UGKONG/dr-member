@@ -1,23 +1,38 @@
-import React from "react";
-import logo from "../assets/images/logo.svg";
+import _React, { useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Main from "./pages/Main";
+import Header from "./components/Header";
+import Menu from "./components/Menu";
+import { StoreState } from "../lib/store";
+import { useSelector } from "react-redux";
 
 export default function App() {
+  const navigate = useNavigate();
+  const loginUser = useSelector((x: StoreState) => x?.loginUser);
+
+  // 로그인 체크
+  const loginCheck = (): void => {
+    if (!loginUser) navigate("/login");
+  };
+
+  useEffect(loginCheck, [loginUser]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {loginUser && <Header />}
+      <Routes>
+        {loginUser ? (
+          <>
+            <Route path="/" element={<Main />} />
+          </>
+        ) : (
+          <>
+            <Route path="/login" element={<Login />} />
+          </>
+        )}
+      </Routes>
+      {loginUser && <Menu />}
+    </>
   );
 }

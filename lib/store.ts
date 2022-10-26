@@ -1,18 +1,20 @@
 import { createStore } from "redux";
+import { OrNull, User } from "../types";
 
 export interface StoreDispatch {
-  type: s;
-  payload: a;
+  type: string;
+  payload: any;
 }
 
 export interface StoreState {
-  number: n;
-  name: s;
+  loginUser: OrNull<User>;
+  isMenu: boolean;
 }
 
 const currentState: StoreState = {
-  number: 1,
-  name: "전상욱",
+  // loginUser: null,
+  loginUser: { USER_SQ: 1, USER_NM: "홍길동" },
+  isMenu: false,
 };
 
 const reducer = (
@@ -25,5 +27,5 @@ const reducer = (
   };
 };
 
-const useStore = createStore(reducer);
-export default useStore;
+const store = createStore(reducer);
+export default store;
