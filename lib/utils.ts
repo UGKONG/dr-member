@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createConnection } from "mysql";
+// import { createConnection } from "mysql";
 import { hangulIncludes, josa } from "@toss/hangul";
 import { isEmail, isMobilePhone, isRRN } from "@toss/validators";
 import {
@@ -181,28 +181,28 @@ export const useChunkArray = (array: Array<any>, count: number): Array<any> => {
  *   WHERE USER_ID = ? AND USER_PW = ?;
  * `, ['USER_ID', 'USER_PW']);
  */
-export const useDatabase = (
-  sql: string,
-  sqlParams?: Array<string | number>
-): Promise<ConnectionReturn> => {
-  const config: ConnectionConfig = {
-    host: process.env.DB_HOST ?? "",
-    user: process.env.DB_USER ?? "",
-    password: process.env.DB_PASSWORD ?? "",
-    database: process.env.DB_DATABASE ?? "",
-    dateStrings: true,
-    multipleStatements: true,
-  };
-  const db = createConnection(config);
+// export const useDatabase = (
+//   sql: string,
+//   sqlParams?: Array<string | number>
+// ): Promise<ConnectionReturn> => {
+//   const config: ConnectionConfig = {
+//     host: process.env.DB_HOST ?? "",
+//     user: process.env.DB_USER ?? "",
+//     password: process.env.DB_PASSWORD ?? "",
+//     database: process.env.DB_DATABASE ?? "",
+//     dateStrings: true,
+//     multipleStatements: true,
+//   };
+//   const db = createConnection(config);
 
-  return new Promise((success) => {
-    db.query(sql, sqlParams, (error: Error | null, result: any) => {
-      db.end();
-      if (error) console.log(error);
-      success({ error, result, sql });
-    });
-  });
-};
+//   return new Promise((success) => {
+//     db.query(sql, sqlParams, (error: Error | null, result: any) => {
+//       db.end();
+//       if (error) console.log(error);
+//       success({ error, result, sql });
+//     });
+//   });
+// };
 
 /**
  * @example

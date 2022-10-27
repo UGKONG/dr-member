@@ -9,11 +9,17 @@ export type P<T = v> = Promise<T>;
 export type OrNull<T> = T | null;
 
 export interface Menu {
-  id: number;
   name: string;
-  path: string;
+  path: string | null;
+  isLine: boolean;
 }
 export interface User {
   USER_SQ: number;
   USER_NM: string;
+}
+export interface Notice {
+  NOTICE_SQ: number;
+  NOTICE_TITLE: string;
+  NOTICE_CONTENTS: string;
+  NOTICE_DATE: string;
 }
