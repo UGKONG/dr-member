@@ -47,7 +47,7 @@ export default function myInfoWidgetListMemo() {
         title: "센터정보",
         subTitle: "내가 속한 센터를 알아보세요",
         icon: RiHomeHeartFill,
-        color: "#b96613",
+        color: "#b99d13",
         path: "/centerInfo",
       },
     ],

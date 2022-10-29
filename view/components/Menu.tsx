@@ -1,4 +1,4 @@
-import _React from "react";
+import _React, { useMemo } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -29,8 +29,6 @@ export default function Menu() {
   // 로그아웃
   const logout = (): void => {
     dispatch({ type: "loginUser", payload: null });
-    navigate("/login");
-    menuOff();
   };
 
   return (
@@ -62,10 +60,12 @@ const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 2;
 `;
 type ContainerProps = { isMenu: boolean };
 const Container = styled.section`
   position: fixed;
+  z-index: 2;
   top: 0;
   left: ${(x: ContainerProps) => (x?.isMenu ? 0 : -60)}%;
   width: 60%;

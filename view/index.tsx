@@ -1,4 +1,4 @@
-import React from "react";
+import _React from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";

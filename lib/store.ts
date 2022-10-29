@@ -1,5 +1,6 @@
 import { createStore } from "redux";
 import { OrNull, User, ModalData } from "../types";
+import { composeWithDevTools } from "redux-devtools-extension";
 
 export interface StoreDispatch {
   type: string;
@@ -28,5 +29,5 @@ const reducer = (
   };
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, composeWithDevTools());
 export default store;

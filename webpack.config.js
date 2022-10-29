@@ -29,7 +29,7 @@ module.exports = {
     // 빌드될 경로
     path: __dirname + "/build",
     // 빌드될 파일명
-    filename: "index.js",
+    filename: "[name].js",
   },
   // 모듈 옵션
   module: {
