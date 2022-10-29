@@ -12,7 +12,7 @@ export interface SubWidgetList {
   path: string;
 }
 
-export default function subWidgetListMemo() {
+export default function serviceWidgetListMemo() {
   const memo = useMemo<SubWidgetList[]>(
     () => [
       {
@@ -23,7 +23,7 @@ export default function subWidgetListMemo() {
         path: "/class",
       },
       {
-        title: "나의 예약",
+        title: "예약 관리",
         subTitle: "잊지말고 나의 예약 정보를 확인하세요",
         icon: BsCalendarRange,
         color: "#f5776e",

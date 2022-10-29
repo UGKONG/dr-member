@@ -1,7 +1,7 @@
 import _React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { SubWidgetList } from "./subWidgetListMemo";
+import { SubWidgetList } from "./serviceWidgetListMemo";
 
 interface Props {
   data: SubWidgetList;

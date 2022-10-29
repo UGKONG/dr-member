@@ -5,46 +5,85 @@ import { BsCheck2 } from "react-icons/bs";
 import { useAxios } from "../../../lib/utils";
 import { useDispatch } from "react-redux";
 import { User } from "../../../types";
+import sha256 from "sha256";
 
 interface CurrentData {
+  os: string;
+  uuid: string;
   id: string;
   pw: string;
   isAuto: boolean;
 }
 
-export default function Form() {
+export default function Form(): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [currentData, setCurrentData] = useState<CurrentData>({
+    os: "",
+    uuid: "",
     id: "",
     pw: "",
     isAuto: false,
   });
 
+  // 아이디, 패스워드 변경
   const inputChange = (e: ChangeEvent<HTMLInputElement>, key: string): void => {
     setCurrentData({ ...currentData, [key]: e?.target?.value });
   };
 
+  // 로그인 저장 체크 변경
   const checkChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setCurrentData({ ...currentData, isAuto: e?.target?.checked });
   };
 
+  // 로그인
   const login = (): void => {
-    const { id, pw, isAuto } = currentData;
-    if (!id) return;
-    if (!pw) return;
-
-    console.log(currentData);
+    const data = {
+      task: "staff_login",
+      uID: currentData?.id,
+      uPW: currentData?.pw,
+      pwd_encrypted: sha256(currentData?.pw),
+      LOGINTYPE: 1,
+    };
     const user: User = {
       USER_SQ: 1,
       USER_NM: "홍길동",
     };
+
+    // useAxios.post("", data).then(({ data }) => {
+    //   let result = data?.split("|")[1];
+    //   if (result !== "index") return alert("로그인에 실패하였습니다.");
+    //   console.log(data);
+
     dispatch({ type: "loginUser", payload: user });
     navigate("/");
+    // });
+  };
+
+  // 로그인 유효성 검사
+  const loginValidate = (): void => {
+    console.log(currentData);
+    const { id, pw, isAuto } = currentData;
+    if (!id) return;
+    if (!pw) return;
+
+    login();
   };
 
   return (
     <Container>
+      <input
+        type="text"
+        id="os"
+        onChange={(e) => inputChange(e, "os")}
+        hidden
+      />
+      <input
+        type="text"
+        id="uuid"
+        onChange={(e) => inputChange(e, "uuid")}
+        hidden
+      />
       <Input
         type="text"
         placeholder="연락처"
@@ -63,7 +102,7 @@ export default function Form() {
         <Label isChecked={currentData?.isAuto}>로그인 상태 유지</Label>
       </AutoLoginBox>
       <ButtonContainer>
-        <LoginBtb onClick={login}>로그인</LoginBtb>
+        <LoginBtn onClick={loginValidate}>로그인</LoginBtn>
       </ButtonContainer>
     </Container>
   );
@@ -124,7 +163,7 @@ const ButtonContainer = styled.div`
   width: 100%;
   margin-top: 30px;
 `;
-const LoginBtb = styled.button`
+const LoginBtn = styled.button`
   font-size: 14px;
   letter-spacing: 1px;
   width: 100%;

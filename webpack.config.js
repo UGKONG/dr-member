@@ -92,6 +92,6 @@ module.exports = {
   // 개발 서버 옵션
   devServer: {
     open: true,
-    port: process.env.CLIENT_PORT || 8081,
+    port: process.env.CLIENT_PORT || 8080,
   },
 };

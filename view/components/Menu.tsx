@@ -1,8 +1,8 @@
-import _React, { useState } from "react";
+import _React from "react";
+import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { StoreState } from "../../lib/store";
 import { Menu } from "../../types";
 import menuListMemo from "./menuListMemo";
@@ -14,16 +14,19 @@ export default function Menu() {
   const isMenu = useSelector((x: StoreState) => x?.isMenu);
   const menuList = menuListMemo();
 
+  // 메뉴 닫기
   const menuOff = (): void => {
     dispatch({ type: "isMenu", payload: false });
   };
 
+  // 메뉴 클릭
   const menuClick = (path: string | null): void => {
     if (!path) return;
     navigate(path);
     menuOff();
   };
 
+  // 로그아웃
   const logout = (): void => {
     dispatch({ type: "loginUser", payload: null });
     navigate("/login");

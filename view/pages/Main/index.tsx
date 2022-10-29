@@ -5,11 +5,13 @@ import Container from "../../components/Container";
 import NoticeItem from "../Notice/NoticeItem";
 import MainWidget from "./MainWidget";
 import SubWidget from "./SubWidget";
-import subWidgetListMemo from "./subWidgetListMemo";
+import serviceWidgetListMemo from "./serviceWidgetListMemo";
+import myInfoWidgetListMemo from "./myInfoWidgetListMemo";
 import jsonData from "../../data.json";
 
 export default function Main() {
-  const widgetList = subWidgetListMemo();
+  const serviceList = serviceWidgetListMemo();
+  const myInfoList = myInfoWidgetListMemo();
   const [noticeList, setNoticeList] = useState<Array<Notice>>([]);
 
   const getNoticeList = (): void => {
@@ -26,22 +28,22 @@ export default function Main() {
 
       <MainTitle>서비스</MainTitle>
       <WidgetList>
-        {widgetList?.map((item) => (
+        {serviceList?.map((item) => (
           <SubWidget key={item?.path} data={item} />
         ))}
       </WidgetList>
 
-      <MainTitle>공지사항</MainTitle>
-      <NoticeList>
-        {noticeList?.map((item) => (
-          <NoticeItem key={item?.NOTICE_SQ} data={item} />
+      <MainTitle>정보</MainTitle>
+      <WidgetList>
+        {myInfoList?.map((item) => (
+          <SubWidget key={item?.path} data={item} />
         ))}
-      </NoticeList>
+      </WidgetList>
     </Container>
   );
 }
 
-const MainTitle = styled.h2`
+export const MainTitle = styled.h2`
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 8px;
@@ -56,11 +58,4 @@ const WidgetList = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`;
-const NoticeList = styled.section`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-height: 400px;
-  overflow: auto;
 `;

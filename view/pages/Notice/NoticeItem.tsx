@@ -1,12 +1,27 @@
 import _React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { Notice } from "../../../types";
+import { ModalData, Notice } from "../../../types";
 
 interface Props {
   data: Notice;
 }
 export default function NoticeItem({ data }: Props) {
-  return <Container>{data?.NOTICE_TITLE}</Container>;
+  const dispatch = useDispatch();
+
+  const noticeClick = (): void => {
+    const sendData: ModalData = {
+      title: data?.NOTICE_TITLE,
+      subTitle: "공지사항",
+      jsx: <span>{data?.NOTICE_CONTENTS}</span>,
+    };
+    dispatch({
+      type: "modalData",
+      payload: sendData,
+    });
+  };
+
+  return <Container onClick={noticeClick}>{data?.NOTICE_TITLE}</Container>;
 }
 
 const Container = styled.section`

@@ -14,10 +14,15 @@ import MyInfo from "./pages/MyInfo";
 import Plan from "./pages/Plan";
 import Notice from "./pages/Notice";
 import Help from "./pages/Help";
+import Checkin from "./pages/Checkin";
+import UseVoucher from "./pages/UseVoucher";
+import Modal from "./components/Modal";
+import CenterInfo from "./pages/CenterInfo";
 
 export default function App() {
   const navigate = useNavigate();
   const loginUser = useSelector((x: StoreState) => x?.loginUser);
+  const modalData = useSelector((x: StoreState) => x?.modalData);
 
   // 로그인 체크
   const loginCheck = (): void => {
@@ -37,10 +42,13 @@ export default function App() {
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/health" element={<Health />} />
             <Route path="/voucher" element={<Voucher />} />
-            <Route path="/myInfo" element={<MyInfo />} />
             <Route path="/plan" element={<Plan />} />
             <Route path="/notice" element={<Notice />} />
             <Route path="/help" element={<Help />} />
+            <Route path="/checkin" element={<Checkin />} />
+            <Route path="/useVoucher" element={<UseVoucher />} />
+            <Route path="/myInfo" element={<MyInfo />} />
+            <Route path="/centerInfo" element={<CenterInfo />} />
           </>
         ) : (
           <>
@@ -49,6 +57,7 @@ export default function App() {
         )}
       </Routes>
       {loginUser && <Menu />}
+      {<Modal />}
     </>
   );
 }

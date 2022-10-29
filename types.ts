@@ -23,3 +23,13 @@ export interface Notice {
   NOTICE_CONTENTS: string;
   NOTICE_DATE: string;
 }
+export interface ModalButton {
+  text: string;
+  onClick: () => void;
+}
+export interface ModalData {
+  title: string;
+  subTitle?: string;
+  jsx: JSX.Element;
+  buttons?: Array<ModalButton>;
+}
