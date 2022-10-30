@@ -1,8 +1,8 @@
 import _React, { useMemo } from "react";
 import { BsPersonCheckFill, BsShieldFillCheck } from "react-icons/bs";
-import { CiCreditCardOff } from "react-icons/ci";
 import { FaBell } from "react-icons/fa";
 import { RiHomeHeartFill } from "react-icons/ri";
+import { TbListDetails } from "react-icons/tb";
 
 export interface SubWidgetList {
   title: string;
@@ -25,7 +25,7 @@ export default function myInfoWidgetListMemo() {
       {
         title: "이용권 사용내역",
         subTitle: "자주 사용한 수업을 알아보세요",
-        icon: CiCreditCardOff,
+        icon: TbListDetails,
         color: "#cc596a",
         path: "/useVoucher",
       },

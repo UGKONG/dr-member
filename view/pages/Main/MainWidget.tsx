@@ -25,7 +25,8 @@ export default function MainWidget({ imgName, path }: Props) {
 type ContainerProps = { imgPath: string };
 const Container = styled.section<ContainerProps>`
   width: 100%;
-  height: 150px;
+  min-height: 150px;
+  max-height: 150px;
   border-radius: 6px;
   box-shadow: 0px 2px 10px #00000020;
   background-size: 130% auto;

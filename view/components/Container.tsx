@@ -23,4 +23,6 @@ const Main = styled.main<MainProps>`
   height: ${(x) => (x?.loginUser ? "calc(100% - 70px)" : "100%")};
   overflow: auto;
   padding: 10px 20px 20px;
+  display: flex;
+  flex-direction: column;
 `;

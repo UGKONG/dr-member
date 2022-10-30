@@ -242,6 +242,39 @@ export const useDate = (
 
 /**
  * @example
+ * useMonthSpan(new Date())
+ * @return
+ * { date: '2022-10-24', startDate: '2022-10-01', endDate: '2022-10-31' ,dateCount: 31}
+ */
+type UseMonthSpanReturn = {
+  date: string;
+  startDate: string;
+  endDate: string;
+  dateCount: number;
+  startDay: number;
+};
+export const useMonthSpan = (currentDate = new Date()): UseMonthSpanReturn => {
+  let date = useDate(currentDate);
+  currentDate.setDate(1);
+  let startDate = useDate(currentDate);
+  let startDay = currentDate?.getDay();
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  currentDate.setDate(1);
+  currentDate.setDate(currentDate.getDate() - 1);
+  let endDate = useDate(currentDate);
+  let dateCount = currentDate?.getDate();
+
+  return {
+    date,
+    startDate,
+    endDate,
+    dateCount,
+    startDay,
+  };
+};
+
+/**
+ * @example
  * useDelay(3);
  * // 3초 뒤 실행
  */

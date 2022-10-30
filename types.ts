@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export type not = null | undefined;
 export type a = any;
 export type s = string;
@@ -7,6 +9,9 @@ export type v = void;
 export type sn = s | number;
 export type P<T = v> = Promise<T>;
 export type OrNull<T> = T | null;
+export type SetState<T> = Dispatch<SetStateAction<T>>;
+
+export type Lang = "ko" | "en";
 
 export interface Menu {
   name: string;
@@ -22,6 +27,22 @@ export interface Notice {
   NOTICE_TITLE: string;
   NOTICE_CONTENTS: string;
   NOTICE_DATE: string;
+}
+export interface Schedule {
+  MEMO: string;
+  RESERVATION_COUNT: number;
+  RESERVATION_WAIT_COUNT: number;
+  ROOM_NAME: string;
+  SCHEDULE_COUNT: number;
+  SCHEDULE_END: string;
+  SCHEDULE_ID: number;
+  SCHEDULE_START: string;
+  SCHEDULE_TITLE: string;
+  SCHEDULE_TYPE: number;
+  SCHEDULE_WAIT_COUNT: number;
+  TEACHER_ID: number;
+  TEACHER_NAME: string;
+  TEACHER_PHONE: string;
 }
 export interface ModalButton {
   text: string;
