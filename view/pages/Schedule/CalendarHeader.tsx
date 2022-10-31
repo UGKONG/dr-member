@@ -52,17 +52,17 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
 `;
 const HeaderBtn = styled.button`
   font-weight: 700;
   font-size: 16px;
   color: #31915c;
+  padding: 0 0 10px;
 `;
 const NowMonth = styled(HeaderBtn)``;
 const SideMonth = styled(HeaderBtn)`
   font-size: 12px;
   font-weight: 500;
   color: #76c79b;
-  padding: 0 10px;
+  padding: 0 10px 10px;
 `;

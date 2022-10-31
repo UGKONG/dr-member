@@ -1,4 +1,5 @@
 import _React, { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import type { Schedule } from "../../../types";
 
@@ -8,6 +9,8 @@ interface Props {
   data: Schedule;
 }
 export default function ScheduleItem({ data }: Props) {
+  const navigate = useNavigate();
+
   const scheduleType = useMemo<ScheduleType>(() => {
     return data?.SCHEDULE_TYPE === 1 ? "PSN" : "GRP";
   }, [data?.SCHEDULE_TYPE]);
@@ -44,8 +47,12 @@ export default function ScheduleItem({ data }: Props) {
     data?.RESERVATION_WAIT_COUNT,
   ]);
 
+  const reservation = (): void => {
+    navigate("/reservation", { state: { clickSchedule: data } });
+  };
+
   return (
-    <Container scheduleType={scheduleType}>
+    <Container scheduleType={scheduleType} onClick={reservation}>
       <Header>
         <HeaderText>{scheduleTypeText}</HeaderText>
         <HeaderText>강사명: {data?.TEACHER_NAME}</HeaderText>

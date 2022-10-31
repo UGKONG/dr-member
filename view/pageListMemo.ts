@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 import Schedule from "./pages/Schedule";
 import Reservation from "./pages/Reservation";
+import MyReservation from "./pages/MyReservation";
 import Health from "./pages/Health";
 import Voucher from "./pages/Voucher";
 import Plan from "./pages/Plan";
@@ -22,6 +23,7 @@ export type PagePathList =
   | "/"
   | "/login"
   | "/class"
+  | "/myReservation"
   | "/reservation"
   | "/health"
   | "/voucher"
@@ -54,6 +56,7 @@ export default function pageListMemo() {
     return [
       { path: "/", component: Main },
       { path: "/class", component: Schedule },
+      { path: "/myReservation", component: MyReservation },
       { path: "/reservation", component: Reservation },
       { path: "/health", component: Health },
       { path: "/voucher", component: Voucher },

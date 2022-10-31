@@ -6,7 +6,7 @@ export default function menuListMemo() {
     { path: "/", name: "홈", isLine: false },
     { path: null, name: "서비스", isLine: true },
     { path: "/class", name: "수업 스케줄", isLine: false },
-    { path: "/reservation", name: "예약 관리", isLine: false },
+    { path: "/myReservation", name: "예약 관리", isLine: false },
     { path: "/health", name: "건강 관리", isLine: false },
     { path: "/voucher", name: "보유 이용권", isLine: false },
     { path: "/plan", name: "오늘의 운동플랜", isLine: false },

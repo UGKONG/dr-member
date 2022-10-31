@@ -27,7 +27,7 @@ export default function serviceWidgetListMemo() {
         subTitle: "잊지말고 나의 예약 정보를 확인하세요",
         icon: BsCalendarRange,
         color: "#f5776e",
-        path: "/reservation",
+        path: "/myReservation",
       },
       {
         title: "건강 관리",
