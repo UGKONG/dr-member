@@ -59,10 +59,6 @@ export default function ScheduleList({ activeDate, scheduleList }: Props) {
 
 const Container = styled.section`
   width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
 `;
 const List = styled.ul`
   flex: 1;
